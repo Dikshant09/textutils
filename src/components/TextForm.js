@@ -59,6 +59,12 @@ export default function TextForm(props) {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
     }
+    const handleCurlyToSquare = () => {
+        let newText = text.replaceAll('[', '{');
+        newText = newText.replaceAll(']', '}');
+        setText(newText);
+        console.log("Curly bracked to square bracket");
+    }
     return (
         <>
         <div className = 'container' style = {{color: props.mode === 'dark' ? 'white' : 'black'}}>
@@ -66,13 +72,14 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" style = {{backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color : props.mode === 'dark' ? 'white' : 'black'}} value ={text} onChange={ handleOnchange } id="myBox" rows="8"></textarea>
             </div>
-            <button className="btn btn-primary mx-1" onClick={ handleUpClick }>Convert to UpperCase</button>
-            <button className="btn btn-primary mx-1" onClick={ handleLoClick }>Convert to lowerCase</button>
-            <button className="btn btn-primary mx-1" onClick={ handleCamelCaseClick }>Convert to camelCase</button>
-            <button className="btn btn-primary mx-1" onClick={ handlePascalCaseClick }>Convert to PascalCase</button>
-            <button className="btn btn-primary mx-1" onClick={ handleReClick }>Reset</button>
-            <button className="btn btn-primary mx-1" onClick={ handleCopy }>Copy text</button>
-            <button className="btn btn-primary mx-1" onClick={ handleExtraSpaces }>Remove Extra Spaces</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleUpClick }>Convert to UpperCase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleLoClick }>Convert to lowerCase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleCamelCaseClick }>Convert to camelCase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handlePascalCaseClick }>Convert to PascalCase</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleReClick }>Reset</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleCopy }>Copy text</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleExtraSpaces }>Remove Extra Spaces</button>
+            <button className="btn btn-primary mx-1 my-1" onClick={ handleCurlyToSquare }>Curly to Square Brackets</button>
         </div>
         <div className="container my-3"  style = {{color: props.mode === 'dark' ? 'white' : 'black'}}> 
             <h2>Your Text Summary</h2>
